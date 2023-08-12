@@ -6,7 +6,6 @@ const userData = [
         name: "Mo",
         email: "user@example.com",
         email_verified_at: "2013",
-        password: "*************",
         created_at: "2013"
     },
     {
@@ -14,7 +13,6 @@ const userData = [
         name: "Mo",
         email: "user@example.com",
         email_verified_at: "2013",
-        password: "*************",
         created_at: "2013"
     },
 ];

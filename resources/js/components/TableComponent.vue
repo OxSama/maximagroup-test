@@ -13,7 +13,6 @@
                         <th class="py-2 px-3 border">Name</th>
                         <th class="py-2 px-3 border">Email</th>
                         <th class="py-2 px-3 border">Email Verified At</th>
-                        <th class="py-2 px-3 border">Password</th>
                         <th class="py-2 px-3 border">created_at</th>
                         <th class="py-2 px-3 border">Actions</th>
                     </tr>
@@ -24,7 +23,6 @@
                         <td class="py-2 px-3 border">{{ user.name }}</td>
                         <td class="py-2 px-3 border">{{ user.email }}</td>
                         <td class="py-2 px-3 border">{{ user.email_verified_at }}</td>
-                        <td class="py-2 px-3 border">{{ user.password }}</td>
                         <td class="py-2 px-3 border">{{ user.created_at }}</td>
                         <td class="py-2 px-3 border">
                             <ButtonsWrapper>
