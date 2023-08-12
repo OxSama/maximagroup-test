@@ -1,10 +1,33 @@
 <script setup>
 import TableComponent from "./TableComponent.vue";
-const columns = ['Name', 'Age', 'Location'];
-const tableData = [
-        { id: 1, Name: 'John', Age: 25, Location: 'NY' },
-        { id: 2, Name: 'Doe', Age: 30, Location: 'LA' }
-      ];
+const userData = [
+    {
+        id: 1,
+        name: "Mo",
+        email: "user@example.com",
+        email_verified_at: "2013",
+        password: "*************",
+        created_at: "2013"
+    },
+    {
+        id: 2,
+        name: "Mo",
+        email: "user@example.com",
+        email_verified_at: "2013",
+        password: "*************",
+        created_at: "2013"
+    },
+];
+
+function handleUpdate(userId) {
+    console.log('Update', userId);
+    // Implement your update logic here
+};
+
+function handleDelete(userId) {
+    console.log('Delete', userId);
+    // Implement your delete logic here
+}
 </script>
 <template>
     <div class="container">
@@ -15,7 +38,7 @@ const tableData = [
 
                     <div class="card-body">
                         <!-- hello -->
-                        <TableComponent :columns="columns" :tableData="tableData" />
+                        <TableComponent :users="userData" @update="handleUpdate" @delete="handleDelete" />
                     </div>
                 </div>
             </div>
