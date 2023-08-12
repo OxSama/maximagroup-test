@@ -19,7 +19,7 @@ import ExampleComponent from './components/ExampleComponent.vue';
 
 const app = createApp({
     components: {
-        ExampleComponent
+        ExampleComponent,
     }
 }).use(router).mount("#app");
 

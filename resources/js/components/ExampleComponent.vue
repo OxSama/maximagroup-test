@@ -1,3 +1,6 @@
+<script setup>
+import TableComponent from "./TableComponent.vue";
+</script>
 <template>
     <div class="container">
         <div class="row justify-content-center">
@@ -6,18 +9,11 @@
                     <div class="card-header">{{ 'Dashboard' }}</div>
 
                     <div class="card-body">
-                        <p class="text-red-500">I'm an example component.</p>
+                        <!-- hello -->
+                        <TableComponent />
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
-<script>
-export default {
-    mounted() {
-        console.log('Component mounted.')
-    }
-}
-</script>
