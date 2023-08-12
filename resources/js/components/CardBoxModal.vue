@@ -1,10 +1,10 @@
 <script setup>
 import { computed } from "vue";
-import BaseButton from "@/components/BaseButton.vue";
-import BaseButtons from "@/components/BaseButtons.vue";
-import CardBox from "@/components/CardBox.vue";
-import OverlayLayer from "@/components/OverlayLayer.vue";
-import CardBoxComponentTitle from "@/components/CardBoxComponentTitle.vue";
+import BaseButton from "./BaseButton.vue";
+import BaseButtons from "./BaseButtons.vue";
+import CardBox from "./CardBox.vue";
+import OverlayLayer from "./OverlayLayer.vue";
+import CardBoxComponentTitle from "./CardBoxComponentTitle.vue";
 
 const props = defineProps({
     title: {

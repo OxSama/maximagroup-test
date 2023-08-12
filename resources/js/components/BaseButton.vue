@@ -1,7 +1,8 @@
 <script setup>
 import { computed } from "vue";
 import { RouterLink } from "vue-router";
-// import BaseIcon from "@/components/BaseIcon.vue";
+import { getButtonColor } from "../colors.js";
+// import BaseIcon from "./BaseIcon.vue";
 
 const props = defineProps({
   label: {
@@ -71,7 +72,9 @@ const computedType = computed(() => {
   return null;
 });
 
-const labelClass = computed(() => props.small && props.icon ? "px-1" : "px-2");
+const labelClass = computed(() =>
+  props.small && props.icon ? "px-1" : "px-2"
+);
 
 const componentClass = computed(() => {
   const base = [
@@ -86,8 +89,7 @@ const componentClass = computed(() => {
     "border",
     props.disabled ? "cursor-not-allowed" : "cursor-pointer",
     props.roundedFull ? "rounded-full" : "rounded",
-    // Replace getButtonColor with static styling:
-    "bg-blue-500", "hover:bg-blue-600", "text-white",
+    getButtonColor(props.color, props.outline, !props.disabled, props.active),
   ];
 
   if (!props.label && props.icon) {

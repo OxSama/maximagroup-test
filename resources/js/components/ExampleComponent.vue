@@ -1,5 +1,10 @@
 <script setup>
 import TableComponent from "./TableComponent.vue";
+const columns = ['Name', 'Age', 'Location'];
+const tableData = [
+        { id: 1, Name: 'John', Age: 25, Location: 'NY' },
+        { id: 2, Name: 'Doe', Age: 30, Location: 'LA' }
+      ];
 </script>
 <template>
     <div class="container">
@@ -10,7 +15,7 @@ import TableComponent from "./TableComponent.vue";
 
                     <div class="card-body">
                         <!-- hello -->
-                        <TableComponent />
+                        <TableComponent :columns="columns" :tableData="tableData" />
                     </div>
                 </div>
             </div>

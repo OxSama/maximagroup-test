@@ -19,7 +19,7 @@ export default defineComponent({
     },
   },
   render() {
-    const hasSlot = this.$slots && this.$slots.default;
+    const hasSlot = this.$slots?.default;
 
     const parentClass = [
       "flex",
@@ -38,8 +38,7 @@ export default defineComponent({
       hasSlot
         ? this.$slots.default().map((element) => {
             if (
-              element &&
-              element.children &&
+              element?.children &&
               typeof element.children === "object"
             ) {
               return h(
