@@ -41,11 +41,10 @@
 <script>
 import ButtonComponent from './BaseButton.vue';
 import ButtonsWrapper from './BaseButtons.vue';
-
 import ConfirmModal from "./CardBoxModal.vue";
+
 export default {
     components: {
-
         ButtonComponent,
         ButtonsWrapper,
         ConfirmModal
