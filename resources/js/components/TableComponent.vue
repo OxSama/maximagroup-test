@@ -27,10 +27,10 @@
                         <td class="py-2 px-3 border">{{ user.password }}</td>
                         <td class="py-2 px-3 border">{{ user.created_at }}</td>
                         <td class="py-2 px-3 border">
-                            <button @click="updateUser(user.id)"
-                                class="px-4 py-2 bg-blue-500 text-white rounded">Update</button>
-                            <button @click="deleteUser(user.id)"
-                                class="px-4 py-2 bg-red-500 text-white rounded ml-2">Delete</button>
+                            <ButtonsWrapper>
+                                <ButtonComponent label="Update" @click="updateUser(user.id)" styleClass="px-4 py-2 bg-blue-500 text-white rounded" />
+                                <ButtonComponent label="Delete" @click="deleteUser(user.id)" styleClass="px-4 py-2 bg-red-500 text-white rounded ml-2" />
+                            </ButtonsWrapper>
                         </td>
                     </tr>
                 </tbody>
@@ -39,9 +39,15 @@
     </div>
 </template>
 <script>
+import ButtonComponent from './BaseButton.vue';
+import ButtonsWrapper from './BaseButtons.vue';
+
 import ConfirmModal from "./CardBoxModal.vue";
 export default {
     components: {
+
+        ButtonComponent,
+        ButtonsWrapper,
         ConfirmModal
     },
     data() {

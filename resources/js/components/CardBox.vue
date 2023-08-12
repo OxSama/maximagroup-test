@@ -12,18 +12,23 @@
                 </button>
             </div>
             <p>{{ message }}</p>
-            <div class="flex justify-end pt-2">
-                <button @click="confirm"
-                    class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Confirm</button>
-                <button @click="close"
-                    class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Cancel</button>
-            </div>
+            <ButtonsWrapper>
+                <ButtonComponent label="Confirm" type="confirm" @click="confirm"/>
+                <ButtonComponent label="Cancel" type="cancel" @click="close"/>
+              </ButtonsWrapper>
         </div>
     </div>
 </template>
 
 <script>
+import ButtonComponent from './BaseButton.vue';
+import ButtonsWrapper from './BaseButtons.vue';
+
 export default {
+    components: {
+    ButtonComponent,
+    ButtonsWrapper
+  },
     props: {
         title: {
             type: String,
