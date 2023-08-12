@@ -14,10 +14,20 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        $this->call(RoleSeeder::class);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Test Admin',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('1234567890'),
+            'role_id' => 1
+        ]);
+
         \App\Models\User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'user@example.com',
             'password' => bcrypt('1234567890'),
+            'role_id' => 2,
         ]);
     }
 }
