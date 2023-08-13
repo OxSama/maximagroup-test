@@ -1,4 +1,4 @@
-name: Deploy Laravel Application
+name: Deploy Laravel + Vite Application
 
 on:
   push:
@@ -13,17 +13,29 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install Dependencies
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install Node Dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y php
-        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-        composer install --prefer-dist --no-scripts -q -o;
         npm install
 
-    - name: Build Assets
+    - name: Build Frontend
       run: |
-        npm run prod
+        npm run build
+
+    - name: Setup PHP and Composer
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extensions: mbstring, dom, fileinfo, mysql
+        tools: composer:v2
+
+    - name: Install Composer Dependencies
+      run: |
+        composer install --prefer-dist --no-scripts -q -o;
 
     - name: Deploy to server
       uses: appleboy/ssh-action@master
