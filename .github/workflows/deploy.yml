@@ -34,9 +34,14 @@ jobs:
         extensions: mbstring, dom, fileinfo, mysql
         tools: composer:v2
 
-    - name: Install Composer Dependencies
+    - name: Install dependencies via composer
       run: |
         composer install --prefer-dist --no-scripts -q -o;
+      shell: /usr/bin/bash -e {0}
+      env:
+        COMPOSER_PROCESS_TIMEOUT: 0
+        COMPOSER_NO_INTERACTION: 1
+        COMPOSER_NO_AUDIT: 1
 
     - name: Deploy to server
       uses: appleboy/ssh-action@master
