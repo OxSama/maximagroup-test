@@ -1,21 +1,26 @@
 <script setup>
 import TableComponent from "./TableComponent.vue";
-const userData = [
-    {
-        id: 1,
-        name: "Mo",
-        email: "user@example.com",
-        email_verified_at: "2013",
-        created_at: "2013"
-    },
-    {
-        id: 2,
-        name: "Mo",
-        email: "user@example.com",
-        email_verified_at: "2013",
-        created_at: "2013"
-    },
-];
+import useUsers from "../composables/Users.js";
+import { onMounted,ref,watch } from "vue";
+
+
+
+const { users, getUsers} = useUsers();
+
+onMounted(() => {
+    getUsers();
+});
+
+
+const userData = ref([]);
+
+const updateUserData = () => {
+    userData.value = users.value;
+}
+
+
+
+watch(users, updateUserData, { immediate: true });
 
 function handleUpdate(userId) {
     console.log('Update', userId);
