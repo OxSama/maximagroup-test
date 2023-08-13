@@ -9,8 +9,14 @@ export default function useUsers(){
         users.value = res.data.data;
     }
 
+
+    const destroyUser = async (id) => {
+        let res = await axios.delete("/api/user/"+id);
+    }
+
     return {
         users,
-        getUsers
+        getUsers,
+        destroyUser
     }
 }

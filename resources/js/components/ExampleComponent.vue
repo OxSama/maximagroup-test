@@ -1,11 +1,11 @@
 <script setup>
 import TableComponent from "./TableComponent.vue";
 import useUsers from "../composables/Users.js";
-import { onMounted,ref,watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 
 
-const { users, getUsers} = useUsers();
+const { users, getUsers, destroyUser } = useUsers();
 
 onMounted(() => {
     getUsers();
@@ -27,9 +27,10 @@ function handleUpdate(userId) {
     // Implement your update logic here
 };
 
-function handleDelete(userId) {
+async function handleDelete(userId) {
     console.log('Delete', userId);
-    // Implement your delete logic here
+    await destroyUser(userId);
+    await getUsers();
 }
 </script>
 <template>
