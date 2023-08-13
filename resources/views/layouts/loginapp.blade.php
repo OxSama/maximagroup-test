@@ -60,12 +60,6 @@
 
                     <div class="lg:w-3/6">
 
-                        <img
-                        class="object-cover"
-                        src="/images/twitter-images.jpg"
-                        alt=""
-                        >
-
                     </div>
 
                     <div class="lg:flex-1 lg:mx-10" style="max-width: 700px">
