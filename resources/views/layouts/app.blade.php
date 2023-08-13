@@ -15,9 +15,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite('resources/css/app.css')
 
-
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <div id="app">
