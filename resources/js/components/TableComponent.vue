@@ -25,10 +25,12 @@
                         <td class="py-2 px-3 border">{{ user.email_verified_at }}</td>
                         <td class="py-2 px-3 border">{{ user.created_at }}</td>
                         <td class="py-2 px-3 border">
-                            <ButtonsWrapper>
-                                <ButtonComponent label="Update" @click="updateUser(user.id)" styleClass="px-4 py-2 bg-blue-500 text-white rounded" />
-                                <ButtonComponent label="Delete" @click="deleteUser(user.id)" styleClass="px-4 py-2 bg-red-500 text-white rounded ml-2" />
-                            </ButtonsWrapper>
+                            <div class="flex w-full flex-row justify-around">
+                                <router-link to="/edit-user"
+                                    class="px-4 py-2 bg-blue-500 text-white rounded">Update</router-link>
+                                <ButtonComponent label="Delete" @click="deleteUser(user.id)"
+                                    styleClass="px-4 py-2 bg-red-500 text-white rounded ml-2" />
+                            </div>
                         </td>
                     </tr>
                 </tbody>

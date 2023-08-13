@@ -8,6 +8,7 @@ import { onMounted, ref, watch } from "vue";
 const { users, getUsers, destroyUser } = useUsers();
 
 onMounted(() => {
+    console.log('Mounted');
     getUsers();
 });
 
@@ -41,7 +42,6 @@ async function handleDelete(userId) {
                     <div class="card-header">{{ 'Dashboard' }}</div>
 
                     <div class="card-body">
-                        <!-- hello -->
                         <TableComponent :users="userData" @update="handleUpdate" @delete="handleDelete" />
                     </div>
                 </div>
