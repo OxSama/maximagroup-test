@@ -9,12 +9,20 @@
         </button>
         <div v-show="showDropdown"
             class="absolute right-0 z-30 w-64 mt-2 origin-top-right bg-white rounded-md shadow-lg dropdown ring-1 ring-black ring-opacity-5">
-            <div class="py-1">
+
+            <!-- Check if the notifications array is empty -->
+            <div v-if="notifications.length === 0" class="py-1 text-center text-gray-500">
+                No new notifications
+            </div>
+
+            <!-- Display notifications if they are present -->
+            <div v-else class="py-1">
                 <a v-for="notification in notifications" :key="notification.id" href="#"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                    {{ notification.text }}
+                    {{ notification.message }}
                 </a>
             </div>
+
         </div>
     </div>
 </template>
@@ -24,16 +32,35 @@ export default {
     data() {
         return {
             showDropdown: false,
-            notifications: [
-                { id: 1, text: "Notification 1" },
-                { id: 2, text: "Notification 2" }
-            ]
+            notifications: []
         };
     },
     methods: {
         toggleDropdown() {
             this.showDropdown = !this.showDropdown;
+        },
+        addNotification(announcement) {
+            console.log(announcement.id);  // Log
+            this.notifications.unshift({
+                id: announcement.id,
+                message: announcement.message
+            });
+        }
+    },
+    mounted() {
+        // Ensure Pusher and Echo are available
+        if (typeof window.Echo !== 'undefined') {
+            console.log(window.Echo);  // Log
+            console.log("Echo is defined");  // Log
+            window.Echo.channel('announcements')
+                .listen('.announcement', announcement => {
+                    console.log(announcement);
+                    this.addNotification(announcement.announcement);
+                });
+        } else {
+            console.log("Echo is not defined");  // Log
         }
     }
 };
+
 </script>
