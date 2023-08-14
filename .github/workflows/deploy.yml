@@ -36,7 +36,7 @@ jobs:
 
     - name: Install Composer Dependencies
       run: |
-        composer install --prefer-dist --no-scripts -q -o;
+        composer install
 
     - name: Deploy to server
       uses: appleboy/ssh-action@master
