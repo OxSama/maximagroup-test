@@ -26,10 +26,11 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
-        path: '/edit-user',
-        name: 'users.edit',
+        path: '/edit-user/:userId',
+        name: 'usersEdit',
         component: EditUserForm,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true },
+        props: true
     }
 ];
 
