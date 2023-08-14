@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { useAuthStore } from '../stores/main';
 export default {
     props: {
         logoutRoute: {
@@ -17,9 +18,15 @@ export default {
             required: true
         }
     },
+    data(){
+        return {
+            authStore: useAuthStore()
+        }
+    },
     methods: {
         logout() {
-            // Implement your logout logic here
+            this.authStore.logout();
+            this.$router.push("/");
         }
     }
 };
