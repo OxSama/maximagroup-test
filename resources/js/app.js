@@ -14,15 +14,24 @@ import { createApp } from 'vue';
  */
 
 import router from './router';
-import ExampleComponent from './components/ExampleComponent.vue';
+import App from './App.vue';
+import { useAuthStore } from "./stores/main";
+import {useUsersStore} from "./stores/users";
+import { createPinia } from "pinia";
+import "./axios-interceptor";
+
+// import AppLayout from "./layouts/AppLayout.vue";
 // app.component('example-component', ExampleComponent);
 
-const app = createApp({
+const pinia = createPinia();
+createApp({
     components: {
-        ExampleComponent,
+        App,
     }
-}).use(router).mount("#app");
+}).use(router).use(pinia).mount("#app");
 
+useUsersStore(pinia);
+useAuthStore(pinia);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
