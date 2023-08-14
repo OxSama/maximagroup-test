@@ -3,31 +3,31 @@
 
         <div class="w-full overflow-x-auto">
             <div class="mb-10">
-                <button @click="openModal" class="bg-blue-500 text-white px-4 py-2 rounded">Open Modal</button>
+                <button @click="openModal" class="px-4 py-2 text-white bg-blue-500 rounded">Open Modal</button>
                 <ConfirmModal :show="showModal" @close-modal="closeModal" @confirm="onConfirm" @cancel="onCancel" />
             </div>
             <table class="min-w-full bg-white table-auto">
                 <thead>
                     <tr>
-                        <th class="py-2 px-3 border">ID</th>
-                        <th class="py-2 px-3 border">Name</th>
-                        <th class="py-2 px-3 border">Email</th>
-                        <th class="py-2 px-3 border">Email Verified At</th>
-                        <th class="py-2 px-3 border">created_at</th>
-                        <th class="py-2 px-3 border">Actions</th>
+                        <th class="px-3 py-2 border">ID</th>
+                        <th class="px-3 py-2 border">Name</th>
+                        <th class="px-3 py-2 border">Email</th>
+                        <th class="px-3 py-2 border">Email Verified At</th>
+                        <th class="px-3 py-2 border">created_at</th>
+                        <th class="px-3 py-2 border">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="user in users" :key="user.id">
-                        <td class="py-2 px-3 border">{{ user.id }}</td>
-                        <td class="py-2 px-3 border">{{ user.name }}</td>
-                        <td class="py-2 px-3 border">{{ user.email }}</td>
-                        <td class="py-2 px-3 border">{{ user.email_verified_at }}</td>
-                        <td class="py-2 px-3 border">{{ user.created_at }}</td>
-                        <td class="py-2 px-3 border">
-                            <div class="flex w-full flex-row justify-around">
+                        <td class="px-3 py-2 border">{{ user.id }}</td>
+                        <td class="px-3 py-2 border">{{ user.name }}</td>
+                        <td class="px-3 py-2 border">{{ user.email }}</td>
+                        <td class="px-3 py-2 border">{{ user.email_verified_at }}</td>
+                        <td class="px-3 py-2 border">{{ user.created_at }}</td>
+                        <td class="px-3 py-2 border">
+                            <div class="flex flex-row justify-around w-full">
                                 <router-link to="/edit-user"
-                                    class="px-4 py-2 bg-blue-500 text-white rounded">Update</router-link>
+                                    class="px-4 py-2 text-white bg-blue-500 rounded">Update</router-link>
                                 <ButtonComponent label="Delete" @click="deleteUser(user.id)"
                                     styleClass="px-4 py-2 bg-red-500 text-white rounded ml-2" />
                             </div>
