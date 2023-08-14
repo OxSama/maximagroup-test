@@ -34,11 +34,6 @@ jobs:
         extensions: mbstring, dom, fileinfo, mysql
         tools: composer:v2
 
-    - name: Check PHP version & Composer settings
-      run: |
-        php -v
-        composer diagnose
-
     - name: Install Composer Dependencies
       run: |
         composer install --prefer-dist --no-scripts -q -o;
