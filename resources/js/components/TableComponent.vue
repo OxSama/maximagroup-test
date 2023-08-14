@@ -44,7 +44,7 @@
                         <td class="px-3 py-2 border">{{ user.created_at }}</td>
                         <td class="px-3 py-2 border">
                             <div class="flex flex-row justify-around w-full">
-                                <router-link to="/edit-user"
+                                <router-link :to="{ name: 'usersEdit', params: { userId: user.id } }"
                                     class="px-4 py-2 text-white bg-blue-500 rounded">Update</router-link>
                                 <ButtonComponent label="Delete" @click="deleteUser(user.id)"
                                     styleClass="px-4 py-2 bg-red-500 text-white rounded ml-2" />
@@ -64,6 +64,7 @@
     </div>
 </template>
 <script>
+import BaseButton from './BaseButton.vue';
 import ButtonComponent from './BaseButton.vue';
 import ButtonsWrapper from './BaseButtons.vue';
 import ConfirmModal from "./CardBoxModal.vue";
@@ -72,7 +73,8 @@ export default {
     components: {
         ButtonComponent,
         ButtonsWrapper,
-        ConfirmModal
+        ConfirmModal,
+        BaseButton
     },
     data() {
         return {
@@ -101,7 +103,9 @@ export default {
 
     methods: {
         updateUser(userId) {
-            this.$emit('update', userId);
+            // this.$emit('update', userId);
+            console.log('Update', userId);
+            this.$router.push({ name: 'usersEdit', params: { userId: userId } });
         },
         deleteUser(userId) {
             this.userIdToDelete = userId;  // Store the user id temporarily
