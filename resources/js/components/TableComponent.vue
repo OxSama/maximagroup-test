@@ -6,6 +6,15 @@
                 <ConfirmModal :show="showModal" @close-modal="closeModal" @confirm="onConfirm" @cancel="onCancel"
                     message="Are you sure you want to delete this user?" />
             </div>
+            <!-- <div class="my-4">
+                <label for="itemsPerPage" class="mr-2">Items per page:</label>
+                <select id="itemsPerPage" v-model="itemsPerPage" @change="updateItemsPerPage($event)">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div> -->
             <table class="min-w-full bg-white table-auto">
                 <thead>
                     <tr>
@@ -18,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in users" :key="user.id">
+                    <tr v-for="user in paginatedUsers" :key="user.id">
                         <td class="px-3 py-2 border">{{ user.id }}</td>
                         <td class="px-3 py-2 border">{{ user.name }}</td>
                         <td class="px-3 py-2 border">{{ user.email }}</td>
@@ -35,6 +44,17 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="mt-4">
+                <button
+                    v-for="page in totalPages"
+                    :key="page"
+                    :class="{'bg-blue-500 text-white': currentPage === page, 'text-blue-500': currentPage !== page}"
+                    class="px-3 py-2 mx-1 rounded"
+                    @click="changePage(page)"
+                >
+                    {{ page }}
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -52,7 +72,9 @@ export default {
     data() {
         return {
             showModal: false,
-            userIdToDelete: null
+            userIdToDelete: null,
+            currentPage: 1,
+            itemsPerPage: 10
         };
     },
     props: {
@@ -61,6 +83,17 @@ export default {
             required: true
         }
     },
+    computed: {
+        paginatedUsers() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            const end = start + this.itemsPerPage;
+            return this.users.slice(start, end);
+        },
+        totalPages() {
+            return Math.ceil(this.users.length / this.itemsPerPage);
+        }
+    },
+
     methods: {
         updateUser(userId) {
             this.$emit('update', userId);
@@ -83,8 +116,14 @@ export default {
         },
         onCancel() {
             console.log('Cancelled');
+        },
+        changePage(page) {
+            this.currentPage = page;
+        },
+        updateItemsPerPage(event) {
+            this.itemsPerPage = parseInt(event.target.value, 10);
+            this.currentPage = 1;
         }
-
     }
 }
 </script>
