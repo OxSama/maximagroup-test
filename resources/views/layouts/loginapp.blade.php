@@ -28,55 +28,8 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <div id="app">
-
-        <section class="px-8 py-4">
-            <header class="container mx-auto mb-6 flex justify-between align-center">
-                <h1>
-
-                    <a href="{{ route('home') }}">
-                        <p
-                        class="h-16 w-32"
-                        >Home</p>
-                    </a>
-
-                </h1>
-
-
-
-                <h1 class="cursor-pointer">
-                    @if (Request::url() == route('register'))
-                        <a href="{{ route('login') }}" class="border-slate-800 rounded px-4 py-1 mr-4 text-slate-800">Login</a>
-                    @else
-                        <a href="{{ route('register') }}" class="border-slate-800 rounded px-4 py-1 mr-4 text-slate-800">Register</a>
-                    @endif
-                </h1>
-            </header>
-        </section>
-
-       <section class="px-8">
-            <main class="container mx-auto">
-                <div class="lg:flex lg:justify-between">
-
-                    <div class="lg:w-3/6">
-
-                    </div>
-
-                    <div class="lg:flex-1 lg:mx-10" style="max-width: 700px">
-
-                        @yield('content')
-
-                    </div>
-
-                </div>
-            </main>
-       </section>
-
-    </div>
-    <script src="http://unpkg.com/turbolinks"></script>
-    <script src="http://unpkg.com/turbolinks"></script>
-    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {{-- <div id="app">
+    </div> --}}
 
 </body>
 </html>

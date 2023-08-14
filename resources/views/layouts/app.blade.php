@@ -23,8 +23,8 @@
 <body>
     <div>
         <nav class="bg-white shadow-sm">
-            <div class="container mx-auto px-4 py-2">
-                <div class="flex justify-between items-center">
+            <div class="container px-4 py-2 mx-auto">
+                <div class="flex items-center justify-between">
                     <a href="{{ url('/') }}" class="text-lg font-semibold">{{ config('app.name', 'Laravel') }}</a>
 
                     <div class="md:hidden">
@@ -37,7 +37,7 @@
                         </button>
                     </div>
 
-                    <div class="hidden md:flex items-center">
+                    <div class="items-center hidden md:flex">
                         <!-- Left Side Of Navbar -->
 
                         <!-- Right Side Of Navbar -->
@@ -54,7 +54,7 @@
                                 __('Register') }}</a>
                             @endif
                             @else
-                            <div class="relative inline-block text-left mr-4">
+                            <div class="relative inline-block mr-4 text-left">
                                 <button id="notificationButton" class="text-gray-500 focus:outline-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -63,7 +63,7 @@
                                     </svg>
                                 </button>
                                 <div
-                                    class="dropdown origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+                                    class="absolute right-0 hidden w-64 mt-2 origin-top-right bg-white rounded-md shadow-lg dropdown ring-1 ring-black ring-opacity-5">
                                     <div class="py-1">
                                         <a href="#"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Notification
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div
-                                class="inline-flex justify-center items-center space-x-2 text-gray-700 hover:text-gray-900">
+                                class="inline-flex items-center justify-center space-x-2 text-gray-700 hover:text-gray-900">
                                 <div class="py-1">
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -96,9 +96,9 @@
     </div>
 
 
-    <main class="py-4" id="app">
+    {{-- <main class="py-4" id="app">
         @yield('content')
-    </main>
+    </main> --}}
     </div>
 </body>
 <script>
