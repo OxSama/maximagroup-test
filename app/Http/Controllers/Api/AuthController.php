@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Announcement;
+use App\Events\NewAnnouncement;
 
 class AuthController extends Controller
 {
@@ -37,6 +39,9 @@ class AuthController extends Controller
         $tokenResult = $this->createNewToken($user);
         $token = $tokenResult->plainTextToken;
 
+        $announcement = Announcement::create(['message' => 'A new user was added']);
+        // event(new NewAnnouncement($announcement));
+        broadcast(new NewAnnouncement($announcement));
         return response()->json([
             'message' => 'User registered successfully!',
             'user' => $user,
