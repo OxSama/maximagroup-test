@@ -14,7 +14,7 @@ export const useAuthStore = defineStore("auth", {
             role: null,
             role_id: null,
         },
-        token: localStorage.getItem('token') || null,
+        token: sessionStorage.getItem('token') || null,
         roles: ["admin", "user"]
     }),
     actions: {
@@ -46,7 +46,7 @@ export const useAuthStore = defineStore("auth", {
             }
         },
         logout() {
-            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
             this.token = null;
             this.user = {
                 id: null,
