@@ -34,5 +34,5 @@ async function handleDelete(userId) {
 <template>
     <AuthenticatedLayoutVue>
         <TableComponent :users="usersStore.users" @update="handleUpdate" @delete="handleDelete" />
-    </AuthenticatedLayoutVue>>
+    </AuthenticatedLayoutVue>
 </template>
