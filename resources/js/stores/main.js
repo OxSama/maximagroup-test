@@ -22,7 +22,7 @@ export const useAuthStore = defineStore("auth", {
 
             try {
                 const response = await axios.post('/login', credentials, { excludeToken: true });
-                console.log(response);
+                // console.log(response);
                 if (response.data) {
                     sessionStorage.setItem('token', response.data.token);
                     useToast().open({ message: 'Logged In ! ', position: 'bottom-right', type: 'success' });

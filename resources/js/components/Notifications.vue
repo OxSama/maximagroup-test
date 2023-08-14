@@ -40,7 +40,7 @@ export default {
             this.showDropdown = !this.showDropdown;
         },
         addNotification(announcement) {
-            console.log(announcement.id);  // Log
+            // console.log(announcement.id);  // Log
             this.notifications.unshift({
                 id: announcement.id,
                 message: announcement.message
@@ -50,11 +50,11 @@ export default {
     mounted() {
         // Ensure Pusher and Echo are available
         if (typeof window.Echo !== 'undefined') {
-            console.log(window.Echo);  // Log
-            console.log("Echo is defined");  // Log
+            // console.log(window.Echo);  // Log
+            // console.log("Echo is defined");  // Log
             window.Echo.channel('announcements')
                 .listen('.announcement', announcement => {
-                    console.log(announcement);
+                    // console.log(announcement);
                     this.addNotification(announcement.announcement);
                 });
         } else {

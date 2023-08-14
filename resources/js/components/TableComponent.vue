@@ -71,7 +71,6 @@ export default {
         },
         openModal() {
             this.showModal = true;
-            console.log(this.showModal);
         },
         closeModal() {
             this.showModal = false;

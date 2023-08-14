@@ -29,7 +29,7 @@ export const useUsersStore = defineStore({
         async destroyUser(id) {
             try {
                 const response = await axios.delete("/users/" + id);
-                console.log(response)
+                // console.log(response)
                 if (response.status === 204) { // or whatever success status code the DELETE endpoint returns
                     useToast().open({ message: 'User deleted successfully', position: 'bottom-right', type: 'success' });
                     return { success: true };
