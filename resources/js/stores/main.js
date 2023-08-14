@@ -79,11 +79,11 @@ export const useAuthStore = defineStore("auth", {
                 };
             }
         },
-        async fetchUserData() {
+        async fetchUserData(userId) {
             if (this.token) {
                 try {
-                    const response = await axios.get('/user');
-                    this.user = response.data;
+                    const response = await axios.get(`/users/${userId}`);
+                    this.user = response.data.data;
                 } catch (error) {
                     if (error.response && error.response.data) {
                         throw new Error(error.response.data.message || 'Error fetching user data');
@@ -92,6 +92,19 @@ export const useAuthStore = defineStore("auth", {
                     }
                 }
             }
-        }
+        },
+        async updateUser(userData, userId)  {
+            try {
+                const response = await axios.put('/users/'+userId, userData);
+                return response.data; // assuming the server returns the updated user data
+            } catch (error) {
+                console.log(error);
+                if (error.response && error.response.data && error.response.data.errors) {
+                    throw new Error(Object.values(error.response.data.errors).flat().join(' '));
+                } else {
+                    throw new Error('Error updating user data.');
+                }
+            }
+        },
     }
 });
