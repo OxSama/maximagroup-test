@@ -22,17 +22,43 @@ const routes = [
     {
         path: '/users',
         name: 'users.view',
-        component: UsersView
+        component: UsersView,
+        meta: { requiresAuth: true }
     },
     {
         path: '/edit-user',
         name: 'users.edit',
-        component: EditUserForm
+        component: EditUserForm,
+        meta: { requiresAuth: true }
     }
 ];
 
-// Create and export router instance
-export default createRouter({
+
+
+const router = createRouter({
     history: createWebHashHistory(),
     routes
 });
+
+// Middleware to check for token
+router.beforeEach((to, from, next) => {
+    // Check if the route requires authentication
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        // Check if token exists
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            next('/');
+        } else {
+            next();
+        }
+    } else {
+        next(); // Always call next() at the end
+    }
+});
+
+// Create and export router instance
+
+
+
+
+export default router;
