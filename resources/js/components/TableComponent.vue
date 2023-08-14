@@ -6,15 +6,24 @@
                 <ConfirmModal :show="showModal" @close-modal="closeModal" @confirm="onConfirm" @cancel="onCancel"
                     message="Are you sure you want to delete this user?" />
             </div>
-            <!-- <div class="my-4">
-                <label for="itemsPerPage" class="mr-2">Items per page:</label>
-                <select id="itemsPerPage" v-model="itemsPerPage" @change="updateItemsPerPage($event)">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
-            </div> -->
+            <div class="my-4 flex items-center">
+                <label for="itemsPerPage" class="mr-4 font-medium text-gray-700">Items per page:</label>
+                <div class="relative">
+                    <select id="itemsPerPage" v-model="itemsPerPage" @change="updateItemsPerPage($event)"
+                        class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path
+                                d="M5.293 9.293a1 1 0 0 1 1.414 0L10 12.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
             <table class="min-w-full bg-white table-auto">
                 <thead>
                     <tr>
@@ -45,13 +54,9 @@
                 </tbody>
             </table>
             <div class="mt-4">
-                <button
-                    v-for="page in totalPages"
-                    :key="page"
-                    :class="{'bg-blue-500 text-white': currentPage === page, 'text-blue-500': currentPage !== page}"
-                    class="px-3 py-2 mx-1 rounded"
-                    @click="changePage(page)"
-                >
+                <button v-for="page in totalPages" :key="page"
+                    :class="{ 'bg-blue-500 text-white': currentPage === page, 'text-blue-500': currentPage !== page }"
+                    class="px-3 py-2 mx-1 rounded" @click="changePage(page)">
                     {{ page }}
                 </button>
             </div>
