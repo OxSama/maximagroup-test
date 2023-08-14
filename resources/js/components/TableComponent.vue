@@ -3,8 +3,8 @@
 
         <div class="w-full overflow-x-auto">
             <div class="mb-10">
-                <button @click="openModal" class="px-4 py-2 text-white bg-blue-500 rounded">Open Modal</button>
-                <ConfirmModal :show="showModal" @close-modal="closeModal" @confirm="onConfirm" @cancel="onCancel" />
+                <ConfirmModal :show="showModal" @close-modal="closeModal" @confirm="onConfirm" @cancel="onCancel"
+                    message="Are you sure you want to delete this user?" />
             </div>
             <table class="min-w-full bg-white table-auto">
                 <thead>
@@ -51,7 +51,8 @@ export default {
     },
     data() {
         return {
-            showModal: false
+            showModal: false,
+            userIdToDelete: null
         };
     },
     props: {
@@ -65,7 +66,8 @@ export default {
             this.$emit('update', userId);
         },
         deleteUser(userId) {
-            this.$emit('delete', userId);
+            this.userIdToDelete = userId;  // Store the user id temporarily
+            this.openModal();
         },
         openModal() {
             this.showModal = true;
@@ -76,7 +78,9 @@ export default {
         },
         onConfirm() {
             console.log('Confirmed');
-            // Implement your logic on confirmation here
+            this.$emit('delete', this.userIdToDelete);
+            this.userIdToDelete = null; // Clear the user id
+            this.closeModal(); // Close the modal
         },
         onCancel() {
             console.log('Cancelled');
