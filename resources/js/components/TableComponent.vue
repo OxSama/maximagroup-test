@@ -45,7 +45,7 @@
                         <td class="px-3 py-2 border">
                             <div class="flex flex-row justify-around w-full">
                                 <router-link :to="{ name: 'usersEdit', params: { userId: user.id } }"
-                                    class="px-4 py-2 text-white bg-blue-500 rounded">Update</router-link>
+                                    class="px-4 py-2 text-white bg-blue-500 rounded no-underline">Update</router-link>
                                 <ButtonComponent label="Delete" @click="deleteUser(user.id)"
                                     styleClass="px-4 py-2 bg-red-500 text-white rounded ml-2" />
                             </div>
