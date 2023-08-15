@@ -4,7 +4,7 @@
             <h1>
             </h1>
             <h1 class="cursor-pointer">
-                <router-link :to="currentRoute" class="px-4 py-1 mr-4 rounded border-slate-800 text-slate-800">
+                <router-link :to="currentRoute" class="px-4 py-1 mr-4 text-xl rounded border-slate-800 text-slate-800">
                     {{ routeLabel }}
                 </router-link>
             </h1>
