@@ -8,7 +8,7 @@
             </svg>
         </button>
         <div v-show="showDropdown"
-            class="absolute right-0 z-30 w-64 mt-2 origin-top-right bg-white rounded-md shadow-lg dropdown ring-1 ring-black ring-opacity-5">
+            class="absolute right-0 z-30 w-32 mt-2 origin-top-right bg-white rounded-md shadow-lg dropdown ring-1 ring-black ring-opacity-5">
 
             <!-- Check if the notifications array is empty -->
             <div v-if="notifications.length === 0" class="py-1 text-center text-gray-500">
