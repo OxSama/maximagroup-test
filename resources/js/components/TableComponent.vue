@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="w-full overflow-x-auto">
             <div class="mb-10">
                 <ConfirmModal :show="showModal" @close-modal="closeModal" @confirm="onConfirm" @cancel="onCancel"
